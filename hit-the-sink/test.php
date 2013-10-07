@@ -1,1 +1,1 @@
-<?php echo date();?>
+<?php echo date(strtotime());?>
