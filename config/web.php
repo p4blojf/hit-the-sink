@@ -14,7 +14,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'XUd_XVFjC1cPTljNDsLpLsoEsCtxBqen',
+            'cookieValidationKey' => 'XUd_XVFjC1cPTljNDs8n2qQhXoLZz',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -30,7 +30,15 @@ $config = [
             'class' => \yii\symfonymailer\Mailer::class,
             'viewPath' => '@app/mail',
             // send all mails to a file by default.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+             'transport' => [
+                'class' => 'Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport',
+                'host' => 'ssmtp.gmail.com',
+                'username' => 'p4blojf@gmail.com',
+                'password' => getenv('SMTP_PASSWORD'),
+                'port' => 587,
+                'encryption' => 'tls',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
